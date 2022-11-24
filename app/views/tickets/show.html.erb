@@ -1,0 +1,14 @@
+
+
+<h1><%= @ticket.id %></h1>
+
+<p><%= @ticket.seat %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_ticket_path(@ticket) %></li>
+  <li><%= link_to "Destroy", ticket_path(@ticket), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+  <li><%= link_to "Back", buses_path %></li>
+</ul>

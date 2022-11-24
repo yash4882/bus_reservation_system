@@ -1,0 +1,80 @@
+<section class="vh-100 gradient-custom mb-5">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Register Bus</h2>
+              <p class="text-white-50 mb-5">Please Register Your Bus Here!</p>
+              
+              <%= form_with model: bus do |form| %>
+
+              <div class="form-outline form-white mb-4">
+                <%= form.label :manager_id, class: :"form-label" %><br>
+                <%= form.select(:manager_id, User.where(role_id:2).pluck(:name, :id), { include_blank: true },{class: 'form-select'})%>
+                <% @bus.errors.full_messages_for(:manager_id).each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <%= form.label :bus_number, class: :"form-label" %><br>
+                <%= form.text_field :bus_number, class: :"form-control" %><br>
+                <% @bus.errors.full_messages_for(:bus_number).each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <%= form.label :source, class: :"form-label" %><br>
+                <%= form.text_field :source, class: :"form-control" %><br>
+                <% @bus.errors.full_messages_for(:source).each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <%= form.label :destination, class: :"form-label" %><br>
+                <%= form.text_field :destination, class: :"form-control" %><br>
+                <% @bus.errors.full_messages_for(:destination).each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <%= form.label :date, class: :"form-label" %><br>
+                <%= form.date_field :date, class: :"form-control" %><br>
+                <% @bus.errors.full_messages_for(:date).each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <%= form.label :time, class: :"form-label" %>
+                <%=form.time_field :time, class: :"form-control" %>
+                <% @bus.errors.full_messages_for(:time).each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <%= form.label :bus_type, class: :"form-label"%>
+                <%= form.text_field :bus_type, class: :"form-control" %><br>
+                <% @bus.errors.full_messages_for(:bus_type).each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              </div>
+
+              <%= form.submit :Submit, class: :"btn btn-primary btn-sm"  %>
+            </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  manager_id: 1
+  bus_number: MyString
+  source: MyString
+  destination: MyString
+  date: 2022-11-11
+  time: 2022-11-11 18:29:51
+  bus_type: MyString
+
+two:
+  manager_id: 1
+  bus_number: MyString
+  source: MyString
+  destination: MyString
+  date: 2022-11-11
+  time: 2022-11-11 18:29:51
+  bus_type: MyString
