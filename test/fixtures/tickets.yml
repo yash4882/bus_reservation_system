@@ -2,6 +2,10 @@
 
 one:
   seat: MyString
+  user: one
+  bus: one
 
 two:
   seat: MyString
+  user: two
+  bus: two

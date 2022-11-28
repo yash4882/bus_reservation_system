@@ -76,9 +76,10 @@ class UsersController < ApplicationController
   end
 
   def change_status
-    @status = User.find(params[:id])
-    @status.update(:status, params[:status])
-    redirect_to @status
+    @user = User.find(params[:id])
+    @user.update(status: params[:status])
+    redirect_to @user, notic: "Status change to #{@user.status}"
+
   end
 
   private

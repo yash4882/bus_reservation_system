@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       delete :signout
     end
   end
-  resources :buses
-  resources :tickets
+  resources :buses do 
+    collection do 
+      resources :tickets
+    end
+  end
+  
 end

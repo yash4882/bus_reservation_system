@@ -2,8 +2,8 @@ class BusesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if params[:query].present?
-      @buses = Bus.where("bus_number || source ||destination ||date LIKE ?", "%#{params[:query]}%")
+    if (params[:query1] && params[:query2]).present?
+      @buses = Bus.where("bus_number || source ||destination ||date LIKE ?", "%#{params[:query1]}#{params[:query2]}%")
       else
         @buses = Bus.all
       end

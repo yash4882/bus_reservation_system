@@ -3,5 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 //= require popper
 //= require remote_bootstrap_modal
-// import "@popperjs/core"
-// import "bootstrap"
+import "@popperjs/core"
+import "bootstrap"

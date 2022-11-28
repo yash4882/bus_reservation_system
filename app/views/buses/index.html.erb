@@ -15,7 +15,8 @@
           <%= form_with(url: buses_path, method: :get, data: {turbo_frame: "bands"}) do |form| %>
 
             <div class="navbar-text">
-              <%= form.text_field :query, class: "py-1 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none" %>
+              <%= form.text_field :query1, class: "py-1 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", placeholder: "To" %>
+              <%= form.text_field :query2, class: "py-1 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", placeholder: "From" %>
               <%= form.submit 'Search', class:"btn btn-primary btn-sm" %>
             </div>
           <% end %>

@@ -50,16 +50,17 @@
         <th scope="row"><%=manager.role_id%></th>
         <th scope="row"><%=manager.age%></th>
         <th scope="row"><%=manager.gender%></th>
-        <th scope="row"><%=manager.status%></th>
+        <th scope="row"><%= link_to "Status", new_user_path, class:"btn btn-success btn-sm", data: { turbo_frame: "remote_modal" }%></th>
+
         <th scope="row" >
           <%if manager.status == "approve"%>
-            <%= link_to "Approve", change_status_users_path(status: "Approve"), class:"btn btn-success btn-sm"%>
+            <%= link_to "Approve", change_status_users_path(@user,status: "Approve"), class:"btn btn-success btn-sm"%>
           <% elsif manager.status == "reject" %>
-            <%= link_to "Rejected", change_status_users_path(status: "Reject"), class:"btn btn-danger btn-sm"%>
+            <%= link_to "Rejected", change_status_users_path(@user,status: "Reject"), class:"btn btn-danger btn-sm"%>
           <% else manager.status == "pending" %>
             <ul>
-              <%= link_to "Approve", change_status_users_path(status: "Approve"), class:"btn btn-success btn-sm"%>
-              <%= link_to "Rejected", change_status_users_path(status: "Reject"), class:"btn btn-danger btn-sm"%>
+              <%= link_to "Approve", change_status_users_path(@user,status: "Approve"), class:"btn btn-success btn-sm"%>
+              <%= link_to "Rejected", change_status_users_path(@user, status: "Reject"), class:"btn btn-danger btn-sm"%>
             </ul>
         </th>
     <%end%>
@@ -68,5 +69,13 @@
   </tbody>
 </table>
 
+<%= render "remote_modal", title: "Status" do %>
+    <p>Please Update Status of Manager!!</p>
+    <% User::STATUSES.each do |status|%>
+    <p><%= link_to status, change_status_users_path(@user,status: status), method: :patch %></p>
+    <%end%>
+    
+  <% end %>
 <%end%>
 
+  

@@ -15,6 +15,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
+      TicketMailer.ticket_book(@ticket).deliver_now
       redirect_to @ticket
     else
       render :new, status: :unprocessable_entity

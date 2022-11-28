@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.integer :role_id
       t.integer :age
       t.string :gender
+  
 
       t.timestamps
     end
