@@ -33,12 +33,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = User.new()
   end
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       flash[:success] = "User created Successfully."
       MailSenderJob.set(wait: 30.second).perform_later(@user.id)

@@ -8,10 +8,14 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :role_id, presence: true
   validates :status, presence: true
-  STATUSES = [:Pending,:Approved,:Rejected]
+  STATUSES = ['pending', 'approved', 'rejected']
   after_create :add_user_role
   has_many :tickets
+  after_initialize :init
 
+  def init
+    self.status ||= STATUSES[0]
+  end
 
   private
   def add_user_role
