@@ -14,7 +14,7 @@
 
               <div class="form-outline form-white mb-4">
                 <%= form.label :manager_id, class: :"form-label" %><br>
-                <%= form.select(:manager_id, User.where(role_id:2).pluck(:name, :id), { include_blank: true },{class: 'form-select'})%>
+                <%= form.select(:manager_id, Role.where.not(id: 1).pluck(:name, :id), { include_blank: true },{class: 'form-select'})%>
                 <% @bus.errors.full_messages_for(:manager_id).each do |message| %>
                   <div><%= message %></div>
                 <% end %>
