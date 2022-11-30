@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     @status.update(:status, params[:status])
     redirect_to @status
   end
-
+ 
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :contact, :role_id, :age, :gender)
