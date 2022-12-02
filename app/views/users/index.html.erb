@@ -10,19 +10,16 @@
         <li class="nav-item"></li>
       </ul>
       <span class="navbar-text">
-        <% if  @current_user.present?%>
+        <% if  current_user.present?%>
           <%= link_to "Buses", buses_path, class:"btn btn-primary btn-sm" %>
-          <%= link_to "Logout", signout_users_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
-        <%else%>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
-        <%= link_to "Register", new_user_path, class: :"btn btn-primary me-md-2"%><br><br>
-        <%= link_to "Login", new_login_users_path, class: :"btn btn-primary me-md-2" %>
-      </div>
-      <%end%>
+          <%= link_to "Logout", destroy_user_session_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
+        <%end%>
+        
       </span>
     </div>
   </div>
 </nav>
+
 
 
 <% if can? :create, @user => User %>
@@ -34,10 +31,11 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Contact</th>
-      <th scope="col">Role_id</th>
+      <th scope="col">Role Id</th>
       <th scope="col">Age</th>
       <th scope="col">Gender</th>
       <th scope="col">Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -50,32 +48,13 @@
         <th scope="row"><%=manager.role_id%></th>
         <th scope="row"><%=manager.age%></th>
         <th scope="row"><%=manager.gender%></th>
-        <th scope="row"><%= link_to "Status", new_user_path, class:"btn btn-success btn-sm", data: { turbo_frame: "remote_modal" }%></th>
-
-        <th scope="row" >
-          <%if manager.status == "approve"%>
-            <%= link_to "Approve", change_status_users_path(@user,status: "Approve"), class:"btn btn-success btn-sm"%>
-          <% elsif manager.status == "reject" %>
-            <%= link_to "Rejected", change_status_users_path(@user,status: "Reject"), class:"btn btn-danger btn-sm"%>
-          <% else manager.status == "pending" %>
-            <ul>
-              <%= link_to "Approve", change_status_users_path(@user,status: "Approve"), class:"btn btn-success btn-sm"%>
-              <%= link_to "Rejected", change_status_users_path(@user, status: "Reject"), class:"btn btn-danger btn-sm"%>
-            </ul>
+        <th scope="row"><span><%= manager.status %></span></th>
+        <th scope="row">
+          <%= link_to "Approve", change_status_user_path(manager.id,status: "approved"), class:"btn btn-success btn-sm", method: :patch %>
+          <%= link_to "Rejected", change_status_user_path(manager.id,status: "rejected"), class:"btn btn-danger btn-sm", method: :patch%>
         </th>
-    <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= render "remote_modal", title: "Status" do %>
-    <p>Please Update Status of Manager!!</p>
-    <% User::STATUSES.each do |status|%>
-    <p><%= link_to status, change_status_users_path(@user,status: status), method: :patch %></p>
-    <%end%>
-    
-  <% end %>
 <%end%>
-
-  

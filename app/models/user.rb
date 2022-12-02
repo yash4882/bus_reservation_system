@@ -1,7 +1,10 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   rolify
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   validates :contact, numericality: {message: "Please Enter numerical value"},length: { minimum: 10, maximum:12 }
   validates :age, numericality: { message: "%{value} seems wrong" }

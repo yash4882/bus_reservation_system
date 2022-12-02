@@ -79,3 +79,6 @@ gem 'rolify'
 gem "letter_opener", group: :development
 gem 'popper_js', '~> 2.11.5'
 gem 'jquery-rails'
+gem "devise"
+gem "cocoon"
+gem 'simple_form', '~> 5.1'

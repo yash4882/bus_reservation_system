@@ -1,7 +1,10 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
-//= require popper
-//= require remote_bootstrap_modal
-import "@popperjs/core"
-import "bootstrap"
+//= require jquery
+//= require jquery_ujs
+//= require cocoon
+//= require bootstrap
+//= @hotwired/turbo-rails
+//= controllers
+//= @popperjs/core
+//= bootstrap
+//= @nathanvda/cocoon
+//= jquery

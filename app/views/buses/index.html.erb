@@ -4,11 +4,15 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarText">
          <span class="navbar-text">
-        <% if  @current_user.present?%>
-          <%= link_to "Logout", signout_users_path, class: 'btn btn-danger', data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
-        <%else%>
-      <%end%>
-      <%= link_to "Home", buses_path, class: 'btn btn-primary' %>
+        
+      <% if  current_user.present?%>
+        <%= link_to "Buses", buses_path, class:"btn btn-primary btn-sm" %>
+        <%= link_to "Logout", destroy_user_session_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
+        <% else %>
+          <%= link_to "Log in", new_user_session_path, class:"btn btn-primary btn-sm" %>
+          <%= link_to "Sign up", new_user_registration_path, class:"btn btn-success btn-sm" %>
+        <%end%>
+      
       </span>
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">

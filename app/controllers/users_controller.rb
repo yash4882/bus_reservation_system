@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   load_and_authorize_resource, except = [:index, :new, :new_login]
-  before_action :check_user, only: [:new, :new_login, :change_status]
-
 
   def index
     @users = User.all
@@ -10,23 +8,23 @@ class UsersController < ApplicationController
   end
 
   def new_login
-
+    
   end
 
-  def login
-    @user = User.where(email: params['email'], password: params['password']).last
-    if @user.present?
-      session[:user_id] = @user.id
-      MailerJob.set(wait: 30.second).perform_later(@user.id)
-      if @user.has_role? :admin
-        redirect_to root_path, success: "You Logged In Successfully!"
-      else
-        redirect_to buses_path, success: "You Logged In Successfully!"
-      end
-    else
-      redirect_to new_login_users_path, danger: "Please provide Valid Credentials!"
-    end
-  end
+  # def login
+  #   @user = User.where(email: params['email'], password: params['password']).last
+  #   if @user.present?
+  #     session[:user_id] = @user.id
+  #     # MailerJob.set(wait: 30.second).perform_later(@user.id)
+  #     if @user.has_role? :admin
+  #       redirect_to root_path, success: "You Logged In Successfully!"
+  #     else
+  #       redirect_to buses_path, success: "You Logged In Successfully!"
+  #     end
+  #   else
+  #     redirect_to new_login_users_path, danger: "Please provide Valid Credentials!"
+  #   end
+  # end
 
   def show
     @user = User.find(params[:id])
@@ -69,15 +67,17 @@ class UsersController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  def signout
-    session[:user_id] = nil
-    redirect_to root_path, danger: "Successfully Logged Out!"
-  end
+  # def signout
+  #   session[:user_id] = nil
+  #   redirect_to root_path, danger: "Successfully Logged Out!"
+  # end
 
   def change_status
-    @status = User.find(params[:id])
-    @status.update(:status, params[:status])
-    redirect_to @status
+    @user = User.find(params[:id])
+    if params[:status].present? && User::STATUSES.include?(params[:status])
+      @user.update(status: params[:status])
+    end
+    redirect_to root_path, notice: "Status updated"
   end
  
   private

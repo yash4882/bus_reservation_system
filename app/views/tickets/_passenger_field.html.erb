@@ -1,0 +1,16 @@
+<div class="nested-fields">
+
+    <div>
+      <%= f.label :name %><br>
+      <%=f.text_field :name%>
+    </div>
+    <div>
+      <%= f.label :age %><br>
+      <%=f.number_field :age %>
+    </div>
+    <div>
+      <%= f.label :contact %><br>
+      <%=f.text_field :contact %>
+    </div>
+    <%= link_to_remove_association "Remove Passenger", f %>
+</div>

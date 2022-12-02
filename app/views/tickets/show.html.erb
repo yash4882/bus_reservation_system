@@ -1,14 +1,24 @@
-<h6>Name : <%=@current_user.name%></h6>
 
-<h6>Email : <%=@current_user.email%></h6>
-
-<h6>Contact : <%=@current_user.contact%></h6>
-
-<h6>Gender : <%=@current_user.gender%></h6>
 
 <h6>Ticket Id : <%=@ticket.id %></h6>
 
 <h6>Seat No : <%= @ticket.seat %></h6>
+
+<%@passengers.each do|passenger|%>
+  <ul>
+    <li>
+      <%=passenger.name%>
+    </li>
+    <li>
+      <%=passenger.age%>
+    </li>
+    <li>
+      <%=passenger.contact%>
+    </li>
+  </ul>
+  <hr>
+<%end%>
+
 
 
 
