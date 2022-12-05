@@ -5,7 +5,7 @@ class BusesController < ApplicationController
     if (params[:query1] && params[:query2]).present?
       @buses = Bus.where("bus_number || source ||destination ||date LIKE ?", "%#{params[:query1]}#{params[:query2]}%")
       else
-        @buses = Bus.all
+        @buses = Bus.all.page(params[:page])
       end
   end
 

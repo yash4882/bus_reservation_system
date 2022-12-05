@@ -82,3 +82,4 @@ gem 'jquery-rails'
 gem "devise"
 gem "cocoon"
 gem 'simple_form', '~> 5.1'
+gem 'kaminari'

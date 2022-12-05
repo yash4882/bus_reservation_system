@@ -12,7 +12,7 @@
       <span class="navbar-text">
         <% if  current_user.present?%>
         <%= link_to "Buses", buses_path, class:"btn btn-primary btn-sm" %>
-        <%= link_to "Logout", destroy_user_session_path(current_user), class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
+        <%= link_to "Logout", destroy_user_session_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
         <% else %>
           <%= link_to "Log in", new_user_session_path, class:"btn btn-primary btn-sm" %>
           <%= link_to "Sign up", new_user_registration_path, class:"btn btn-success btn-sm" %>
@@ -21,5 +21,4 @@
     </div>
   </div>
 </nav>
-
 

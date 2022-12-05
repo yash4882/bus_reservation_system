@@ -11,6 +11,23 @@
       <div><%= message %></div>
     <% end %>
   </div>
+
+  <div class="form-outline form-white mb-4">
+    <%= form.label :User_Id %><br>
+    <%= form.text_field :user_id %>
+    <% ticket.errors.full_messages_for(:user_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-outline form-white mb-4">
+    <%= form.label :Bus_Id %><br>
+    <%= form.text_field :bus_id %>
+    <% ticket.errors.full_messages_for(:bus_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
   <h2>passanger</h2>
     <div id="passengers">
       <%=form.simple_fields_for :passengers do |passenger|%>
@@ -21,7 +38,7 @@
       </div>
     </div>
   
-  <%= form.submit :Submit, class: "btn btn-outline-secondary " %>
+  <%= form.submit :Submit, class: "btn btn-primary " %>
 </div>
 <% end %>
 </div>

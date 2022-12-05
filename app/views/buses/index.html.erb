@@ -62,3 +62,6 @@
 <% if can? :create, @bus => Bus %>
   <%= link_to "Add Bus", new_bus_path, class: :"btn btn-primary me-md-2" %>
 <%end%>
+
+<hr>
+<%= paginate @buses %>

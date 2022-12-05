@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     collection do
       get :new_login
       post :login
-      # delete :signout
+      delete :signout
     end
     member do 
       get :change_status
