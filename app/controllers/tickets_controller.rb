@@ -14,7 +14,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    debugger
+    # debugger
     @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save

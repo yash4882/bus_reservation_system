@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users do
-    collection do
-      get :new_login
-      post :login
-      delete :signout
-    end
+    # collection do
+    #   get :new_login
+    #   post :login
+    #   delete :signout
+    # end
     member do 
       get :change_status
       patch :change_status
