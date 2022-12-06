@@ -4,31 +4,8 @@
   <h2 class="fw-bold mb-2 text-uppercase">Book-Ticket</h2>
   <p class="text-white-50 mb-5">Please enter book your ticket!</p>
   <%= simple_form_for ticket do |form| %>
-  <div class="form-outline form-white mb-4">
-    <%= form.label :seat %><br>
-    <%= form.text_field :seat %>
-    <% ticket.errors.full_messages_for(:seat).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div class="form-outline form-white mb-4">
-    <%= form.label :User_Id %><br>
-    <%= form.text_field :user_id %>
-    <% ticket.errors.full_messages_for(:user_id).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div class="form-outline form-white mb-4">
-    <%= form.label :Bus_Id %><br>
-    <%= form.text_field :bus_id %>
-    <% ticket.errors.full_messages_for(:bus_id).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <h2>passanger</h2>
+    <%= form.hidden_field :bus_id%>
+    <h2>passanger</h2>
     <div id="passengers">
       <%=form.simple_fields_for :passengers do |passenger|%>
         <%=render 'passenger_field', f: passenger %>

@@ -52,7 +52,7 @@
         <td><%=bus.bus_type%></td>
         <td><%=bus.date%></td>
         <td><%=bus.time%></td>
-        <td><%=link_to "Book", new_ticket_path, class:"btn btn-primary me-md-2"%></td>
+        <td><%=link_to "Book", new_ticket_path(bus_id: bus.id), class:"btn btn-primary me-md-2"%></td>
       </tr>
     <% end %>
 

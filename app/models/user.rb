@@ -11,9 +11,9 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :role_id, presence: true
   validates :status, presence: true
-  STATUSES = ['pending', 'approved', 'rejected']
   after_create :add_user_role
   has_many :tickets
+  STATUSES = ['pending', 'approved', 'rejected']
   after_initialize :init
 
   def init

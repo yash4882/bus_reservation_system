@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     if params[:status].present? && User::STATUSES.include?(params[:status])
       @user.update(status: params[:status])
     end
-    redirect_to root_path, notice: "Status updated"
+    redirect_to users_path, notice: "Status updated"
   end
  
   private

@@ -3,7 +3,7 @@ class BusesController < ApplicationController
 
   def index
     if (params[:query1] && params[:query2]).present?
-      @buses = Bus.where("bus_number || source ||destination ||date LIKE ?", "%#{params[:query1]}#{params[:query2]}%")
+      @buses = Bus.where("bus_number || source ||destination ||date LIKE ?", "%#{params[:query1]}#{params[:query2]}%").page(params[:page])
       else
         @buses = Bus.all.page(params[:page])
       end
