@@ -54,8 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_112227) do
   create_table "tickets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "bus_id"
+    t.bigint "user_id", null: false
+    t.bigint "bus_id", null: false
     t.index ["bus_id"], name: "index_tickets_on_bus_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
@@ -88,4 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_112227) do
   end
 
   add_foreign_key "passengers", "tickets"
+  add_foreign_key "tickets", "buses"
+  add_foreign_key "tickets", "users"
 end

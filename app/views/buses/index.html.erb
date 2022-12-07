@@ -17,14 +17,18 @@
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
-          <%= form_with(url: buses_path, method: :get, data: {turbo_frame: "bands"}) do |form| %>
+          <%= search_form_for @q, url: :buses do |form|%>
 
-            <div class="navbar-text">
-              <%= form.text_field :query1, class: "py-1 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", placeholder: "From" %>
-              <%= form.text_field :query2, class: "py-1 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", placeholder: "To" %>
-              <%= form.submit 'Search', class:"btn btn-primary btn-sm" %>
-            </div>
-          <% end %>
+           <div>
+             <%= form.text_field :source_cont %>
+           </div>
+           <div>
+             <%= form.text_field :destination_cont %>
+           </div>
+           <div>
+             <%= form.submit %>
+           </div>
+         <%end%>
        </div>
   </div>
 </nav>

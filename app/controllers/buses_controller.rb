@@ -2,11 +2,16 @@ class BusesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if (params[:query1] && params[:query2]).present?
-      @buses = Bus.where("bus_number || source ||destination ||date LIKE ?", "%#{params[:query1]}#{params[:query2]}%").page(params[:page])
-      else
-        @buses = Bus.all.page(params[:page])
-      end
+    # if (params[:query1] && params[:query2]).present?
+    #   @buses = Bus.where("bus_number || source ||destination ||date LIKE ?", "%#{params[:query1]}#{params[:query2]}%").page(params[:page])
+    #   else
+    #     @buses = Bus.all.page(params[:page])
+    #   end
+    @q = Bus.ransack(params[:q])
+    @buses = @q.result(distinct: true).page(params[:page])
+    # @buses = Bus.all.page(params[:page])
+
+
   end
 
   def show

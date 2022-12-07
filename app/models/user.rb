@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :age, numericality: { message: "%{value} seems wrong" }
   validates :gender, presence: true
   validates :role_id, presence: true
-  # validates :status, presence: true
+  validates :status, presence: true
   after_create :add_user_role
   has_many :tickets
   STATUSES = ['Pending', 'Approved', 'Rejected']
