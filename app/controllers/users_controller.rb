@@ -73,6 +73,7 @@ class UsersController < ApplicationController
   # end
 
   def change_status
+    # debugger
     @user = User.find(params[:id])
     if params[:status].present? && User::STATUSES.include?(params[:status])
       @user.update(status: params[:status])
