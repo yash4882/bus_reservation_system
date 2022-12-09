@@ -10,8 +10,6 @@ class BusesController < ApplicationController
     @q = Bus.ransack(params[:q])
     @buses = @q.result(distinct: true).page(params[:page])
     # @buses = Bus.all.page(params[:page])
-
-
   end
 
   def show

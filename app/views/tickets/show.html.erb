@@ -1,23 +1,32 @@
 <%@passengers.each do|passenger|%>
-  <ul>
-    <li>
-      <%=passenger.name%>
-    </li>
-    <li>
-      <%=passenger.age%>
-    </li>
-    <li>
-      <%=passenger.contact%>
-    </li>
-  </ul>
-  <hr>
+<table class="table caption-top">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">User Id</th>
+      <th scope="col">Bus Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Seat</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%=@ticket.id%></td>
+        <td><%=@ticket.user_id%></td>
+        <td><%=@ticket.bus_id%></td>
+        <td><%=passenger.name%></td>
+        <td><%=passenger.age%></td>
+        <td><%=passenger.contact%></td>
+        <td><%=passenger.seat%></td>
+      </tr>
+  </tbody>
+</table>
 <%end%>
-
-
-
 
 <div class="btn-group" role="group" aria-label="Basic outlined example">
   <button type="button" class="btn btn-outline-primary"><%= link_to "Edit", edit_ticket_path(@ticket) %></button>
-  <button type="button" class="btn btn-outline-primary"><%= link_to "Destroy", ticket_path(@ticket), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
-  <button type="button" class="btn btn-outline-primary"><%= link_to "Back", :back %></button>
+  <button type="button" class="btn btn-outline-primary "><%= link_to "Destroy", ticket_path(@ticket), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
+  <button type="button" class="btn btn-outline-primary "><%= link_to "Back", :back %></button>
 </div>

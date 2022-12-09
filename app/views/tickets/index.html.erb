@@ -3,14 +3,26 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Seat.No</th>
-
+      <th scope="col">User Id</th>
+      <th scope="col">Bus Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Seat</th>
     </tr>
   </thead>
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr>
-        
+        <td><%=ticket.id%></td>
+        <td><%=ticket.user_id%></td>
+        <td><%=ticket.bus_id%></td>
+        <% @passengers.each do |passenger|%>
+        <td><%=passenger.name%></td>
+        <td><%=passenger.age%></td>
+        <td><%=passenger.contact%></td>
+        <td><%=passenger.seat%></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

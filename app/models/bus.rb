@@ -1,5 +1,5 @@
 class Bus < ApplicationRecord
-  paginates_per 3
+  paginates_per 5
 
   validates :manager_id, presence: true
   validates :bus_number, presence: true, uniqueness: true

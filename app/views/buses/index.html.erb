@@ -3,33 +3,27 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarText">
-         <span class="navbar-text">
+      <span class="navbar-text">
         
-      <% if  current_user.present?%>
-        <%= link_to "Buses", buses_path, class:"btn btn-primary btn-sm" %>
-        <%= link_to "Logout", destroy_user_session_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
+        <% if  current_user.present?%>
+          <%= link_to "Buses", buses_path, class:"btn btn-primary btn-sm" %>
+          <%= link_to "Logout", destroy_user_session_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
         <% else %>
           <%= link_to "Log in", new_user_session_path, class:"btn btn-primary btn-sm" %>
           <%= link_to "Sign up", new_user_registration_path, class:"btn btn-success btn-sm" %>
         <%end%>
-      
       </span>
-
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      </ul>
-          <%= search_form_for @q, url: :buses do |form|%>
-
-           <div>
-             <%= form.text_field :source_cont %>
-           </div>
-           <div>
-             <%= form.text_field :destination_cont %>
-           </div>
-           <div>
-             <%= form.submit %>
-           </div>
-         <%end%>
-       </div>
+    </div>
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand"></a>
+        <%= search_form_for @q do |f| %>
+          <%= f.search_field :source_cont, placeholder:" From" %>
+          <%= f.search_field :destination_cont, placeholder:" To" %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </nav>
   </div>
 </nav>
 <center><h1 class="mt-3">Buses</h1></center>
@@ -43,29 +37,38 @@
       <th scope="col">Bus Type</th>
       <th scope="col">Date</th>
       <th scope="col">Time</th>
+      <th scope="col">Total Seat</th>
+      <th scope="col">Allocated Seat</th>
       <th scope="col">Book Ticket</th>
+
     </tr>
   </thead>
   <tbody>
     <% @buses.each do |bus| %>
       <tr>
-        <th scope="row"><%=bus.id%></th>
+        <th scope="row"><%= bus.id%></th>
         <td><%=link_to bus.bus_number, bus_path(bus.id)%></td>
         <td><%=bus.source%></td>
         <td><%=bus.destination%></td>
         <td><%=bus.bus_type%></td>
         <td><%=bus.date%></td>
         <td><%=bus.time%></td>
-        <td><%=link_to "Book", new_ticket_path(bus_id: bus.id), class:"btn btn-primary me-md-2"%></td>
+        <td><%=bus.total_seat%></td>
+        <td><%=bus.allocated_seat%></td>
+        <td><%=link_to "Book", new_ticket_path(bus_id: bus.id), class:"btn btn-primary text-white"%></td>
       </tr>
     <% end %>
 
   </tbody>
 </table>
 
-<% if can? :create, @bus => Bus %>
-  <%= link_to "Add Bus", new_bus_path, class: :"btn btn-primary me-md-2" %>
+<% if current_user.status == "Rejected"%>
+  <h4> You have been rejected by admin </h4>
+<% elsif current_user.has_role? :admin %>
+  <%= link_to "Add Bus", new_bus_path, class:"btn btn-primary text-white" %>
+<% elsif  current_user.status == "Pending" %>
+  <h4>your request is pending</h4>  
+<%elsif can? :create, @bus => Bus %>
+  <%= link_to "Add Bus", new_bus_path, class:"btn btn-primary text-white" %>
 <%end%>
-
-<hr>
 <%= paginate @buses %>
