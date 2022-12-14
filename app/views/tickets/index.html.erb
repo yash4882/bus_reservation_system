@@ -17,12 +17,9 @@
         <td><%=ticket.id%></td>
         <td><%=ticket.user_id%></td>
         <td><%=ticket.bus_id%></td>
-        <% @passengers.each do |passenger|%>
+      <% @passengers.each do |passenger| %>
         <td><%=passenger.name%></td>
-        <td><%=passenger.age%></td>
-        <td><%=passenger.contact%></td>
-        <td><%=passenger.seat%></td>
-        <% end %>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
