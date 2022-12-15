@@ -8,5 +8,6 @@ class Bus < ApplicationRecord
   validates :date, presence: true
   validates :time, presence: true
   validates :bus_type, presence: true
+  # validates :price, presence: true
   has_many :tickets
 end

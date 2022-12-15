@@ -1,13 +1,13 @@
 class TicketsController < ApplicationController
   def index
-    @tickets = Ticket.all
-    @passengers = Passenger.all
+    @tickets =  current_user.tickets.all
+    # @passengers = Passenger.all
 
   end
 
   def show
     @ticket =  current_user.tickets.find(params[:id])
-    @passengers = @ticket.passengers
+    # @passengers = @ticket.passengers
   end
 
   def new

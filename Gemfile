@@ -72,18 +72,36 @@ group :test do
   gem "webdrivers"
 end
 
+# bootstrap
 gem 'bootstrap', '~> 5.2.2'
-#  Version cancancan 3.4.0 and rolify 6.0,0
+
+# authenticate generated role  Version cancancan 3.4.0 and rolify 6.0,0
 gem 'cancancan'
+
+# define role to user
 gem 'rolify'
+
 gem "letter_opener", group: :development
 gem 'popper_js', '~> 2.11.5'
 gem 'jquery-rails'
+
+# create login logout session
 gem "devise"
+
+# add more partial form like add passenger
 gem "cocoon"
+
+# add simple partical form by cocoon jem
 gem 'simple_form', '~> 5.1'
+
+# add pagination by kaminari gem
 gem 'kaminari'
+
+# rubocop for find errors in all over project
 gem 'rubocop-rails'
+
+# we use ransack is for search buses
 gem 'ransack' 
 
+# manage active admin
 gem 'activeadmin'
