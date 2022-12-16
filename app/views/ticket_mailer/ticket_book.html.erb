@@ -4,5 +4,17 @@
   You Have Successfully Booked Ticket.
 </p>
 
+<% @ticket.passengers.each do |passenger|%>
+<ul>
+  <li>Passenger Name: <%=passenger.name%></li>
+  <li>Passenger Age: <%=passenger.age%></li>
+  <li>Passenger Contact: <%=passenger.contact%></li>
+  <li>Passenger Gender: <%=passenger.gender%></li>
+  <li>Passenger Seat No: <%=passenger.seat%></li>
+</ul>
+<%end%>
+
+<h3>Price:<%= @bus.price * @passenger %></h3>
+
 <h4>Thanks</h4>
 <h4>Manager Team</h4>

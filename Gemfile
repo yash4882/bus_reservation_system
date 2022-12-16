@@ -81,8 +81,13 @@ gem 'cancancan'
 # define role to user
 gem 'rolify'
 
+# for showing mail for mailer
 gem "letter_opener", group: :development
+
+# for bootstrap 
 gem 'popper_js', '~> 2.11.5'
+
+# also for bootstrap
 gem 'jquery-rails'
 
 # create login logout session
@@ -105,3 +110,6 @@ gem 'ransack'
 
 # manage active admin
 gem 'activeadmin'
+
+# for adding icons
+gem "font-awesome-sass", "~> 6.2.1"

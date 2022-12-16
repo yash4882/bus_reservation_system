@@ -1,7 +1,10 @@
 class TicketMailer < ApplicationMailer
-	def ticket_book(user)
-
-    mail to: "user@gmail.com", from: "admin@gmail.com" ,subject: "Booked Successfully"
+	def ticket_book(id)
+    @ticket = Ticket.find(id)
+    @bus = Ticket.find(id).bus
+    @passenger = Ticket.find(id).passengers.count
+    
+    @current_user = Ticket.find(id).user
+    mail to: @current_user.email, from: "admin@gmail.com" ,subject: "Booked Successfully"
   end
-
 end

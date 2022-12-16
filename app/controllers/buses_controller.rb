@@ -56,6 +56,6 @@ class BusesController < ApplicationController
 
   private
     def bus_params
-      params.require(:bus).permit(:manager_id, :bus_number, :source, :destination, :date, :time, :bus_type)
+      params.require(:bus).permit(:manager_id, :bus_number, :source, :destination, :date, :time, :bus_type, :price)
     end
 end
