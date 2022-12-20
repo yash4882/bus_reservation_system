@@ -1,20 +1,32 @@
-
-<table class="table caption-top">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">User Id</th>
-      <th scope="col">Bus Id</th>
-    </tr>
-  </thead>
-  <tbody>
+<%@ticket.passengers.each do |passenger|%>
+  <table class="table caption-top">
+    <thead>
       <tr>
-        <td><%=@ticket.id%></td>
-        <td><%=@ticket.user_id%></td>
-        <td><%=@ticket.bus_id%></td>
+        <th scope="col">Id</th>
+        <th scope="col">User Id</th>
+        <th scope="col">Bus Id</th>
+        <th scope="col">Passenger-Name</th>
+        <th scope="col">Passenger-Age</th>
+        <th scope="col">Passenger-Gender</th>
+        <th scope="col">Passenger-Contact</th>
+        <th scope="col">Passenger-Seat</th>
       </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%=@ticket.id%></td>
+          <td><%=@ticket.user_id%></td>
+          <td><%=@ticket.bus_id%></td>
+
+          <td><%= passenger.name%></td>
+          <td><%= passenger.age%></td>
+          <td><%= passenger.gender%></td>
+          <td><%= passenger.contact%></td>
+          <td><%= passenger.seat%></td>
+        </tr>
+    </tbody>
+  </table>  
+<%end%>
 
 
 <div class="btn-group" role="group" aria-label="Basic outlined example">

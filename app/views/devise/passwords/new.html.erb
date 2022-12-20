@@ -4,7 +4,7 @@
     <div class="mb-md-5 mt-md-4 pb-5 pt-5 bg-light">
       <center>
         <h2 class="fw-bold mb-2 text-uppercase">Reset Password</h2>
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |form| %>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, data: {turbo: :false} }) do |form| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-outline form-white mb-4 mt-5">

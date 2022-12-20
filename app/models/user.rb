@@ -13,6 +13,7 @@ class User < ApplicationRecord
   # validates :status, presence: true
   after_create :add_user_role
   has_many :tickets
+  has_many_attached :images
   STATUSES = ['Pending', 'Approved', 'Rejected']
   after_initialize :init
 

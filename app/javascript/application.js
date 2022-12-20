@@ -4,7 +4,9 @@
 //= require bootstrap
 import '@hotwired/turbo-rails'
 //= controllers
-//= @popperjs/core
-//= bootstrap
+import "@popperjs/core"
+import "bootstrap"
 //= @nathanvda/cocoon
 //= jquery
+
+
