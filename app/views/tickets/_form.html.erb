@@ -7,12 +7,17 @@
       <%=form.simple_fields_for :passengers do |passenger|%>
         <%=render 'passenger_field', f: passenger %>
       <%end%>
+      
       <div class="links">
-          <%=link_to_add_association 'Add Passenger', form, :passengers, partial: 'passenger_field' %>
+          <% unless @ticket.new_record?%>
+          <%else%>
+            <%=link_to_add_association 'Add Passenger', form, :passengers, partial: 'passenger_field' %>
+          <%end%>
       </div>
     </div>
   
   <br><%= form.submit :Submit, class: "btn btn-primary " %>
+  <%= link_to "Back", :back %>
   <% end %>
 </div>
 

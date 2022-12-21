@@ -1,15 +1,1 @@
-<h1>Edit Ticket</h1>
-<div class="mb-md-5 mt-md-4 pb-5">
-  <center><h2 class="fw-bold mb-2 text-uppercase">Book-Ticket</h2></center>
-  <%= form_with model: @ticket do |form| %>
-    <%= form.hidden_field :bus_id%>
-    <h3>passanger</h3>
-    <div id="passengers">
-      <%=form.simple_fields_for :passengers do |passenger|%>
-        <%=render 'passenger_field', f: passenger %>
-      <%end%>
-    </div>
-  
-  <br><%= form.submit :Submit, class: "btn btn-primary " %>
-  <% end %>
-</div>
+<%= render "form", ticket: @ticket %>

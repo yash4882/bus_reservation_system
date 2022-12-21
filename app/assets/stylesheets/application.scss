@@ -15,8 +15,11 @@
  */
 @import "bootstrap";
 img{
-    height:100vh;
     object-fit:cover;
     width:100%;
+}
+a{
+  text-decoration: none;
+  color:inherit;
 }
 @import "font-awesome";

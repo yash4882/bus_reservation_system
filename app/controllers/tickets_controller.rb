@@ -42,9 +42,12 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket = current_user.tickets.find(params[:id])
+    passenger = @ticket.passengers.count
+    bus = @ticket.bus
+    bus.update(allocated_seat: bus.allocated_seat - passenger) 
     @ticket.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to buses_path, status: :see_other
   end
 
   # def booked_seats
