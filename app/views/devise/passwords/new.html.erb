@@ -8,18 +8,16 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-outline form-white mb-4 mt-5">
-          <%= form.label :email, class: :"form-label"%>
-          <%= form.email_field :email, class: :"form-control" %>
-        </div>
-
-          <div>
-            <%= form.submit "Reset Password", class: "btn btn-primary" %>
-          </div>
-
+          <%= form.label :email, class: "form-label"%>
+          <%= form.email_field :email, class: "form-control w-50" %>
         </div>
 
         <div>
-          <p class="mb-0">Don't have an account? <%= render "devise/shared/links" %></p>
+          <%= form.submit "Reset Password", class: "btn btn-primary" %>
+        </div>
+
+        <div>
+          <p class="mt-5">Don't have an account? <%= render "devise/shared/links" %></p>
         </div>
         <% end %>
       </center>

@@ -1,24 +1,25 @@
-<div class="nested-fields">
+<center>
+  <div class="nested-fields">
 
-    <div>
-      <%= f.label :name %><br>
-      <%=f.text_field :name%>
-    </div>
-    <div>
-      <%= f.label :age %><br>
-      <%=f.number_field :age %>
-    </div>
-     <div>
-      <%= f.label :gender %><br>
-      <%=f.text_field :gender %>
-    </div>
-    <div>
-      <%= f.label :contact %><br>
-      <%=f.text_field :contact %>
-    </div>
-    <% unless @ticket.new_record?%>
-    <%else%>
-    <%= link_to_remove_association "Remove Passenger", f %>
-    <%end%>
-</div>
-
+      <div class="form-outline form-white mb-4 ">
+        <%= f.label :name %><br>
+        <%=f.text_field :name%>
+      </div>
+      <div class="form-outline form-white mb-4 ">
+        <%= f.label :age %><br>
+        <%=f.number_field :age %>
+      </div>
+       <div class="form-outline form-white mb-4 ">
+        <%= f.label :gender %><br>
+        <%=f.text_field :gender %>
+      </div>
+      <div class="form-outline form-white mb-4 ">
+        <%= f.label :contact %><br>
+        <%=f.text_field :contact %>
+      </div>
+      <% unless @ticket.new_record?%>
+      <%else%>
+      <%= link_to_remove_association "Remove Passenger", f%>
+      <%end%>
+  </div>
+</center>
