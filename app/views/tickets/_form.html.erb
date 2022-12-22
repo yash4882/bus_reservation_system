@@ -2,6 +2,9 @@
   <div class="mb-md-5 mt-md-4 pb-5 w-50">
     <%= simple_form_for ticket do |form| %>
       <%= form.hidden_field :bus_id%>
+
+      <button type="button" class="btn btn-primary m-5" data-bs-toggle="modal"  data-bs-target="#exampleModal">Choose Seat</button>
+
       <h5>Add and Enter Passngers Details</h5>
       <div id="passengers">
         <%=form.simple_fields_for :passengers do |passenger|%>
@@ -20,5 +23,35 @@
     <%= link_to "Back", :back %>
     <% end %>
   </center>
+</div>
+
+
+<!-- Pop-up model and showing all seats -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Seats</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer d-block " style="padding: 20px 114px;">
+        <% seats = ['0','1','2','3','4']%>
+          <% all_seats = [] %>
+          <%('A'..'O').each do |i|%>
+            <%(1..seats.length-1).each do |j|%>
+              <% if (j == 1)%>
+              <button type="button" class="btn btn-primary" style="width: 50px;" >
+                <%=i+seats[j]%>
+              </button><span>&nbsp &nbsp &nbsp</span>
+              <% else%>
+                <button type="button" class="btn btn-primary" style="width: 50px;" >
+                <%=i+seats[j]%>
+              </button>
+              <%end%>
+            <%end%>
+          <%end%>
+      </div>
+    </div>
+  </div>
 </div>
 
