@@ -9,6 +9,7 @@
       <th scope="col">Age</th>
       <th scope="col">Gender</th>
       <th scope="col">Status</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,8 @@
         <td><%=@user.age%></td>
         <td><%=@user.gender %></td>
         <td><%=@user.status%></td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Status</button></td>
+
       </tr>
   </tbody>
 </table>
@@ -32,3 +35,26 @@
                   } %></button>
   <button type="button" class="btn btn-outline-primary"><%= link_to "Back", :back %></button>
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="z-index: 99999999999;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Change Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% User::STATUSES.each do |status| %>
+          <%= link_to change_status_user_path(@user, status: status), turbo_method: :patch do %>
+            <button class="btn btn-primary"><%= status %></button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -32,7 +32,6 @@
       <th scope="col">Age</th>
       <th scope="col">Gender</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -46,19 +45,11 @@
         <th scope="row"><%=manager.age%></th>
         <th scope="row"><%=manager.gender%></th>
         <th scope="row"><span><%= manager.status %></span></th>
-        <th scope="row">
-          <%if manager.status == "Approved"%>
-            <%= link_to "Rejected", change_status_user_path(manager.id,status: "Rejected"), class:"btn btn-danger btn-sm text-white", turbo_method: :patch%>
-          <%elsif manager.status== "Rejected"%>
-            <%= link_to "Approve", change_status_user_path(manager.id,status: "Approved"), class:"btn btn-success btn-sm text-white", turbo_method: :patch %>
-          <%else%>
-            <%= link_to "Approve", change_status_user_path(manager.id,status: "Approved"), class:"btn btn-success btn-sm text-white", turbo_method: :patch %>
-            <%= link_to "Rejected", change_status_user_path(manager.id,status: "Rejected"), class:"btn btn-danger btn-sm text-white", turbo_method: :patch%>
-          <%end%>
-        </th>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 <%end%>
+
 
