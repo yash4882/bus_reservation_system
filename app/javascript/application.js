@@ -9,4 +9,3 @@ import "bootstrap"
 //= @nathanvda/cocoon
 //= jquery
 
-

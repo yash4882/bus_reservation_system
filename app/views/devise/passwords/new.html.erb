@@ -1,8 +1,8 @@
 <%= render "layouts/flash" %>
 <div class="container">
   <div class="card-body p-3 text-center ">
-    <div class="mb-md-5 mt-md-4 pb-5 pt-5 bg-light">
-      <center>
+    <center>
+      <div class="mb-md-5 mt-md-4 pb-5 pt-5 bg-light w-50 shadow-lg">
         <h2 class="fw-bold mb-2 text-uppercase">Reset Password</h2>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, data: {turbo: :false} }) do |form| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -20,7 +20,7 @@
           <p class="mt-5">Don't have an account? <%= render "devise/shared/links" %></p>
         </div>
         <% end %>
-      </center>
-    </div>
+      </div
+    </center>
   </div>
-</div
+</div>

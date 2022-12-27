@@ -2,10 +2,13 @@ class Ticket < ApplicationRecord
   belongs_to :user
   belongs_to :bus
   has_many :passengers, dependent: :delete_all
+
+  # it is use for cocoon gem
   accepts_nested_attributes_for :passengers, allow_destroy: true
+  
   after_create :seat_allocated
 
-def seat_allocated 
+  def seat_allocated 
     return puts "There is no seat available" if bus.allocated_seat == bus.total_seat
     seats = ['0','1','2','3','4']
     all_seats = []
