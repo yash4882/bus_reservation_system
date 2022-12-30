@@ -21,3 +21,10 @@ Rails.application.routes.draw do
   end
 end
 
+# index
+# show
+# edit
+# update
+# cretae
+# new
+# destroy
