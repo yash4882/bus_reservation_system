@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_122743) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_30_092832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_122743) do
     t.index ["ticket_id"], name: "index_passengers_on_ticket_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "name"
+    t.text "review"
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_reviews_on_ticket_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -145,6 +154,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_122743) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "passengers", "tickets"
+  add_foreign_key "reviews", "tickets"
   add_foreign_key "tickets", "buses"
   add_foreign_key "tickets", "users"
 end

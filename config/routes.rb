@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :buses 
   resources :tickets do
     resources :passengers
+    resources :reviews
   end
 end
 

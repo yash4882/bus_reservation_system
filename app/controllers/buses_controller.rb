@@ -14,6 +14,9 @@ class BusesController < ApplicationController
 
   def show
     @bus = Bus.find(params[:id])
+    @review = @bus.tickets.all
+  rescue ActiveRecord::RecordNotFound => error
+    redirect_to root_path, notice: error.message
   end
 
   def new

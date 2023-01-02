@@ -38,3 +38,12 @@
                     }%></button>
   <button type="button" class="btn btn-outline-primary"><%= link_to "Back", buses_path %></button>
 </div>
+
+<div class="mt-3">
+<h3>All Reviews</h3>
+  <%@review.map{|r| r.reviews}.each do |re|%>
+    <% re.each do |rev|%>
+    Review : <%=rev.review%><br><br>
+    <%end%>
+  <%end%>
+</div>

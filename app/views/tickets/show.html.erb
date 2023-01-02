@@ -10,6 +10,7 @@
         <th scope="col">Passenger-Gender</th>
         <th scope="col">Passenger-Contact</th>
         <th scope="col">Passenger-Seat</th>
+        <th scope="col">Departure</th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
           <td><%= passenger.gender%></td>
           <td><%= passenger.contact%></td>
           <td><%= passenger.seat%></td>
+          <td><%= @ticket.bus.date%></td>
         </tr>
     </tbody>
   </table>  
@@ -34,3 +36,32 @@
   <button type="button" class="btn btn-outline-primary "><%= link_to "Destroy", ticket_path(@ticket), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
   <button type="button" class="btn btn-outline-primary "><%= link_to "Back", :back %></button>
 </div>
+
+<%if @ticket.bus.date < Date.today%>
+<h2>Reviews</h2>
+<% @ticket.reviews.each do |comment| %>
+  <p>
+    <strong>Reviewer :</strong>
+     <%= @current_user.name %>
+  </p>
+
+  <p>
+    <strong>Review :</strong>
+    <%= comment.review %>
+  </p>
+<% end %>
+
+<h3>Add Your Reviews</h3>
+<%= form_with model: [ @ticket, @ticket.reviews.build ] do |form| %>
+  <p>
+    Name : <%= @current_user.name %>
+  </p>
+  <p>
+    <%= form.label :Review %><br>
+    <%= form.text_area :review %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<% end %>

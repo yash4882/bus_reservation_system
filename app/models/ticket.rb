@@ -2,6 +2,7 @@ class Ticket < ApplicationRecord
   belongs_to :user
   belongs_to :bus
   has_many :passengers, dependent: :delete_all
+  has_many :reviews
   # has_many :passengers, -> { order(name: :desc) }
   
   # it is use for cocoon gem
