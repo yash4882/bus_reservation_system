@@ -11,6 +11,7 @@
       </ul>
       <span class="navbar-text">
         <% if  current_user.present?%>
+          <%= link_to "Home", root_path, class:"btn btn-primary btn-sm" %>
           <%= link_to "Buses", buses_path, class:"btn btn-primary btn-sm" %>
           <%= link_to "Logout", destroy_user_session_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
         <%end%>

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+ class UsersController < ApplicationController
   load_and_authorize_resource, except = [:index, :new, :new_login]
 
   def index
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.savekk
       flash[:success] = "User created Successfully."
       MailSenderJob.set(wait: 30.second).perform_later(@user.id)
       # UserRegistrationMailer.register_notification(@user).deliver_now

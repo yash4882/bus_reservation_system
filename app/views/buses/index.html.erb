@@ -6,6 +6,7 @@
       <span class="navbar-text">
         
         <% if  current_user.present?%>
+          <%= link_to "Home", root_path, class:"btn btn-primary btn-sm" %>
           <%= link_to "Buses", buses_path, class:"btn btn-primary btn-sm" %>
           <%= link_to "Logout", destroy_user_session_path, class:"btn btn-danger btn-sm", data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
         <% else %>
@@ -16,11 +17,11 @@
     </div>
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand"></a>
         <%= search_form_for @q do |f| %>
-          <%= f.search_field :source_cont, placeholder:" From" %>
-          <%= f.search_field :destination_cont, placeholder:" To" %>
-          <%= f.submit %>
+          <%= f.search_field :source_cont, placeholder:" From", class:"form-control d-inline-block me-2 ", style: "width:43%" %>
+          <%= f.search_field :destination_cont, placeholder:" To", class:"form-control me-2 d-inline-block ", style: "width:43%" %>
+          <%#= f.submit%>
+          <button><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
         <% end %>
       </div>
     </nav>
@@ -28,9 +29,10 @@
 </nav>
 <center><h2 class="mt-3">Buses</h2></center>
 <table class="table caption-top">
+  <%if @buses.present?%>
   <thead>
     <tr>
-      <th scope="col">Bus Id</th>
+    <!--   <th scope="col">Bus Id</th> -->
       <th scope="col">Bus Number</th>
       <th scope="col">Source</th>
       <th scope="col">Destination</th>
@@ -38,25 +40,28 @@
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Price</th>
-      <th scope="col">Total Seat</th>
-      <th scope="col">Allocated Seat</th>
+ <!-- <th scope="col">Total Seat</th>
+      <th scope="col">Allocated Seat</th>-->      
       <th scope="col">Book Ticket</th>
 
     </tr>
   </thead>
+  <%else%>
+    <center><h1>No Buses Found</h1></center>
+  <%end%>
   <tbody>
     <% @buses.each do |bus| %>
       <tr>
-        <th scope="row"><%= bus.id%></th>
+     <!--    <th scope="row"><%#= bus.id%></th> -->
         <td><%=link_to bus.bus_number, bus_path(bus.id)%></td>
-        <td><%=bus.source%></td>
-        <td><%=bus.destination%></td>
-        <td><%=bus.bus_type%></td>
+        <td><%=bus.source.capitalize%></td>
+        <td><%=bus.destination.capitalize%></td>
+        <td><%=bus.bus_type.upcase%></td>
         <td><%=bus.date%></td>
         <td><%=bus.time%></td>
         <td><%=bus.price%></td>
-        <td><%=bus.total_seat%></td>
-        <td><%=bus.allocated_seat%></td>
+        <!-- <td><%#=bus.total_seat%></td>
+        <td><%#=bus.allocated_seat%></td> -->
         <td><%=link_to "Book", new_ticket_path(bus_id: bus.id), class:"btn btn-primary text-white"%></td>
       </tr>
     <% end %>

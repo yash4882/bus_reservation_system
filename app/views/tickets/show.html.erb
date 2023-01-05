@@ -38,30 +38,30 @@
 </div>
 
 <%if @ticket.bus.date < Date.today%>
-<h2>Reviews</h2>
-<% @ticket.reviews.each do |comment| %>
-  <p>
-    <strong>Reviewer :</strong>
-     <%= @current_user.name %>
-  </p>
+  <h2>Reviews</h2>
+  <% @ticket.reviews.each do |comment| %>
+    <p>
+      <strong>Reviewer :</strong>
+       <%= @current_user.name %>
+    </p>
 
-  <p>
-    <strong>Review :</strong>
-    <%= comment.review %>
-  </p>
-<% end %>
+    <p>
+      <strong>Review :</strong>
+      <%= comment.review %>
+    </p>
+  <% end %>
 
-<h3>Add Your Reviews</h3>
-<%= form_with model: [ @ticket, @ticket.reviews.build ] do |form| %>
-  <p>
-    Name : <%= @current_user.name %>
-  </p>
-  <p>
-    <%= form.label :Review %><br>
-    <%= form.text_area :review %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  <h3>Add Your Reviews</h3>
+  <%= form_with model: [ @ticket, @ticket.reviews.build ] do |form| %>
+    <p>
+      Name : <%= @current_user.name %>
+    </p>
+    <p>
+      <%= form.label :Review %><br>
+      <%= form.text_area :review %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
 <% end %>
