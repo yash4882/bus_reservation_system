@@ -49,6 +49,12 @@
       <strong>Review :</strong>
       <%= comment.review %>
     </p>
+    <p>
+       <%= link_to "Destroy Comment", [review.ticket, review], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+    </p>
   <% end %>
 
   <h3>Add Your Reviews</h3>

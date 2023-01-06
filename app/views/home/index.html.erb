@@ -43,3 +43,7 @@
     </div>
   </div>
 </div>
+
+<%if current_user.present?%>
+  <div >Logged in as : <%=current_user.email%></div>
+<%end%>

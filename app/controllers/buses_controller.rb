@@ -10,13 +10,15 @@ class BusesController < ApplicationController
     @q = Bus.ransack(params[:q])
     @buses = @q.result(distinct: true).page(params[:page])
     # @buses = Bus.all.page(params[:page])
+    # @mbuses = Bus.where(manager_id:current_user.id)
+      
   end
 
   def show
     @bus = Bus.find(params[:id])
     @review = @bus.tickets.all
-  rescue ActiveRecord::RecordNotFound => error
-    redirect_to root_path, notice: error.message
+  # rescue ActiveRecord::RecordNotFound => error
+  #   redirect_to root_path, notice: error.message
   end
 
   def new

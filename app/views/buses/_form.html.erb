@@ -1,12 +1,22 @@
 
 <%= form_with model: bus do |form| %>
   <div class="form-outline form-white mb-4 ">
-    <%= form.label :manager_id, class: "form-label" %><br>
-    <%= form.select(:manager_id, Role.where(id: 2).pluck(:name, :id), { include_blank: true },{class: "form-select"})%>
+    <%#= form.label :manager_id, class: "form-label" %>
+    <%= form.hidden_field :manager_id, value: current_user.id%>
+    <%#= form.select(:manager_id, User.with_role(:manager).pluck(:name, :id), { include_blank: true },{class: "form-select"})%>
     <% @bus.errors.full_messages_for(:manager_id).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
+
+  <div class="form-outline form-white mb-4 ">
+    <%= form.label :bus_number, class: "form-label" %><br>
+    <%= form.text_field :bus_number, class: "form-control w-100" %>
+    <% @bus.errors.full_messages_for(:bus_number).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
   <div class="row">
     <div class="col-6">
       <div class="form-outline form-white mb-4 ">
@@ -27,13 +37,16 @@
       </div>
     </div>
   </div>
-  <div class="form-outline form-white mb-4 ">
-    <%= form.label :bus_number, class: "form-label" %><br>
-    <%= form.text_field :bus_number, class: "form-control w-100" %>
-    <% @bus.errors.full_messages_for(:bus_number).each do |message| %>
+
+  <div class="form-outline form-white mb-4 " >
+    <%= form.label :bus_type, class: "form-label"%>
+    <%= form.text_field :bus_type, class: "form-control w-100" %>
+    <% @bus.errors.full_messages_for(:bus_type).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
+    
+
   <div class="row">
     <div class="col-6">
       <div class="form-outline form-white mb-4 ">
@@ -53,16 +66,8 @@
         <% end %>
       </div>
     </div>
-
-    <div class="form-outline form-white mb-4 " >
-      <%= form.label :bus_type, class: "form-label"%>
-      <%= form.text_field :bus_type, class: "form-control w-100" %>
-      <% @bus.errors.full_messages_for(:bus_type).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
     <center>
-      <div class="form-outline form-white mb-4 w-50">
+      <div class="form-outline form-white mb-4 ">
         <%= form.label :price, class: "form-label" %>
         <%= form.text_field :price, class: "form-control w-100" %>
         <% @bus.errors.full_messages_for(:price).each do |message| %>

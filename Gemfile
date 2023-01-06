@@ -115,7 +115,7 @@ gem 'activeadmin'
 gem 'font-awesome-sass'
 
 # Active storage for upload images
-gem "image_processing", ">= 1.2"
+gem 'image_processing'
 
-
-
+# ratyrate for review form
+gem 'ratyrate'

@@ -236,6 +236,7 @@ GEM
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
+    ratyrate (1.2.2.alpha)
     regexp_parser (2.6.0)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -332,7 +333,7 @@ DEPENDENCIES
   debug
   devise
   font-awesome-sass
-  image_processing (>= 1.2)
+  image_processing
   importmap-rails
   jbuilder
   jquery-rails
@@ -343,6 +344,7 @@ DEPENDENCIES
   puma
   rails
   ransack
+  ratyrate
   rolify
   rubocop-rails
   selenium-webdriver

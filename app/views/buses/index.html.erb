@@ -29,10 +29,12 @@
 </nav>
 <center><h2 class="mt-3">Buses</h2></center>
 <table class="table caption-top">
+
   <%if @buses.present?%>
+  <%#if @buses.blank?%>
   <thead>
     <tr>
-    <!--   <th scope="col">Bus Id</th> -->
+      <th scope="col">M Id</th>
       <th scope="col">Bus Number</th>
       <th scope="col">Source</th>
       <th scope="col">Destination</th>
@@ -52,7 +54,7 @@
   <tbody>
     <% @buses.each do |bus| %>
       <tr>
-     <!--    <th scope="row"><%#= bus.id%></th> -->
+        <th scope="row"><%= bus.manager_id%></th>
         <td><%=link_to bus.bus_number, bus_path(bus.id)%></td>
         <td><%=bus.source.capitalize%></td>
         <td><%=bus.destination.capitalize%></td>
