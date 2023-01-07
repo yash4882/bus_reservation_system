@@ -27,6 +27,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
+      <th scope="col">Username</th>
       <th scope="col">Email</th>
       <th scope="col">Contact</th>
       <th scope="col">Role Id</th>
@@ -40,6 +41,7 @@
       <tr>
         <th scope="row"><%=manager.id%></th>
         <th scope="row"><%=link_to manager.name, user_path(manager.id) %></th>
+        <th scope="row"><%=manager.username%></th>
         <th scope="row"><%=manager.email%></th>
         <th scope="row"><%=manager.contact%></th>
         <th scope="row"><%=manager.role_id%></th>

@@ -11,6 +11,11 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
 
+          <div class="field w-50">
+            <%= f.label :username %>
+            <%= f.text_field :username, autofocus: true, autocomplete: "username"%>
+          </div>
+
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
           <% end %>
@@ -49,4 +54,3 @@
     </div>
   </div>
 </div
-

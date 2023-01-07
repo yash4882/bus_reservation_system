@@ -13,6 +13,12 @@
             <div><%= message %></div>
           <% end %>
         </div>
+
+        <div class="field form-white mb-4">
+          <%= f.label :username %>
+          <%= f.text_field :username, autofocus: true, autocomplete: "username"%>
+        </div>
+
         <div class="row">
           <div class="col-6">
             <div class="form-outline form-white mb-4">
