@@ -4,9 +4,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         # ,authentication_keys: [:username]
   rolify
   validates :name, presence: true
-  # validates :username, presence: true, uniqueness: true
+  # validates :email, presence: true
+  validates :username, presence: true, uniqueness: true
   # validates :username, presence: true, uniqueness: { case_sensitive: false }
   # validates :password, presence: true
   # validates :contact, numericality: {message: "Please Enter numerical value"},length: { minimum: 10, maximum:12 }
@@ -28,7 +30,7 @@ class User < ApplicationRecord
   def self.find_for_database_authentication warden_condition
     conditions = warden_condition.dup
     login = conditions.delete(:login)
-    where(conditions).where(["lower(username) = :value OR lower(email) = :value",{ value: login.strip.downcase}]).first
+    where(conditions).where(["lower(username) = :value OR lower(contact) = :value OR lower(email) = :value",{ value: login.strip.downcase}]).first
   end
 
   private

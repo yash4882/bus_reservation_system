@@ -42,8 +42,8 @@
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Price</th>
- <!-- <th scope="col">Total Seat</th>
-      <th scope="col">Allocated Seat</th>-->      
+      <th scope="col">Total Seat</th>
+      <th scope="col">Allocated Seat</th>      
       <th scope="col">Book Ticket</th>
 
     </tr>
@@ -62,8 +62,8 @@
         <td><%=bus.date%></td>
         <td><%=bus.time%></td>
         <td><%=bus.price%></td>
-        <!-- <td><%#=bus.total_seat%></td>
-        <td><%#=bus.allocated_seat%></td> -->
+        <td><%=bus.total_seat%></td>
+        <td><%=bus.allocated_seat%></td>
         <td><%=link_to "Book", new_ticket_path(bus_id: bus.id), class:"btn btn-primary text-white"%></td>
       </tr>
     <% end %>
